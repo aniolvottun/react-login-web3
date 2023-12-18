@@ -21,7 +21,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
       disabled={disabled}
       style={{ ...buttonStyle, ...props.style }}
     >
-      {text}
+      {text || "Connect wallet"}
     </button>
   );
 };
