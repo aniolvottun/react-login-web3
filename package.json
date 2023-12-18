@@ -1,18 +1,27 @@
 {
-  "name": "react-login-web3",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "vite build && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/react": "^18.2.45",
-    "react": "^18.2.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10"
-  }
+ "name": "react-login-web3",
+ "private": false,
+ "version": "1.0.0",
+ "description": "",
+ "main": "dist/index.umd.js",
+ "module": "dist/index.mjs",
+ "types": "dist/index.d.ts",
+ "files": [
+   "dist"
+ ],
+ "scripts": {
+   "test": "echo \"Error: no test specified\" && exit 0",
+   "build": "vite build && tsc"
+ },
+ "author": "",
+ "license": "ISC",
+ "devDependencies": {
+   "@types/react": "^18.2.45",
+   "react": "^18.2.0",
+   "typescript": "^5.3.3",
+   "vite": "^5.0.10"
+ },
+ "peerDependencies": {
+   "react": "^18.2.0"
+ }
 }
