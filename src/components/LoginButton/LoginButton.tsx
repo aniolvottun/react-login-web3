@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { LoginButtonProps } from "./LoginButton.types";
 import { ethers } from 'ethers';
 import { Spinner } from "../Spinner";
+import { CoreService } from '../../services';
 
 export function LoginButton ({
   style,
@@ -15,11 +16,16 @@ export function LoginButton ({
     width: 'fit-content',
     minWidth: "135px",
     padding: '8px 12px',
+
     backgroundColor: "#0077FF",
     color: "#FFFFFF",
     borderRadius: "8px",
     border: "none",
     cursor: "pointer",
+
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   const beautifyAddress = (address: string): string => {
@@ -35,7 +41,11 @@ export function LoginButton ({
         const signer = await provider.getSigner();
         const address = await signer.getAddress();
         
-        const signature = await signer.signMessage("Message to sign");
+        const message = await CoreService.getMessage();
+        const signature = await signer.signMessage(message);
+        const isValid = await CoreService.verifyMessage(signature);
+
+        if (!isValid) throw new Error("Invalid signature");
 
         setIsConnected(true);
         setWalletAddress(address);
